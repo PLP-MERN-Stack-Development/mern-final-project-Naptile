@@ -1,52 +1,239 @@
-# MERN Stack Capstone Project
+MERN Task Manager
+A full-stack task management web application built with the MERN stack (MongoDB, Express, React, Node.js) that allows users to register, login, create, update, delete, and manage tasks.
 
-This assignment focuses on designing, developing, and deploying a comprehensive full-stack MERN application that showcases all the skills you've learned throughout the course.
+Table of Contents
 
-## Assignment Overview
 
-You will:
-1. Plan and design a full-stack MERN application
-2. Develop a robust backend with MongoDB, Express.js, and Node.js
-3. Create an interactive frontend with React.js
-4. Implement testing across the entire application
-5. Deploy the application to production
+Features
 
-## Getting Started
 
-1. Accept the GitHub Classroom assignment
-2. Clone the repository to your local machine
-3. Follow the instructions in the `Week8-Assignment.md` file
-4. Plan, develop, and deploy your capstone project
+Tech Stack
 
-## Files Included
 
-- `Week8-Assignment.md`: Detailed assignment instructions
+Project Structure
 
-## Requirements
 
-- Node.js (v18 or higher)
-- MongoDB (local installation or Atlas account)
-- npm or yarn
-- Git and GitHub account
-- Accounts on deployment platforms (Render/Vercel/Netlify/etc.)
+Installation
 
-## Project Ideas
 
-The `Week8-Assignment.md` file includes several project ideas, but you're encouraged to develop your own idea that demonstrates your skills and interests.
+Environment Variables
 
-## Submission
 
-Your project will be automatically submitted when you push to your GitHub Classroom repository. Make sure to:
+Running Locally
 
-1. Commit and push your code regularly
-2. Include comprehensive documentation
-3. Deploy your application and add the live URL to your README.md
-4. Create a video demonstration and include the link in your README.md
 
-## Resources
+Deployment
 
-- [MongoDB Documentation](https://docs.mongodb.com/)
-- [Express.js Documentation](https://expressjs.com/)
-- [React Documentation](https://react.dev/)
-- [Node.js Documentation](https://nodejs.org/en/docs/)
-- [GitHub Classroom Guide](https://docs.github.com/en/education/manage-coursework-with-github-classroom) 
+
+Usage
+
+
+Screenshots (optional)
+
+
+License
+
+
+
+Features
+
+
+User Signup and Login with JWT authentication.
+
+
+Protected routes for authenticated users.
+
+
+Full CRUD operations for tasks:
+
+
+Create tasks with title, description, status, and due date.
+
+
+Read all tasks for logged-in user.
+
+
+Update tasks (edit title, description, status, due date).
+
+
+Delete tasks.
+
+
+
+
+Mark tasks as completed.
+
+
+Logout functionality.
+
+
+Responsive and clean user interface.
+
+
+
+Tech Stack
+
+
+Frontend: React, Axios, React Router DOM
+
+
+Backend: Node.js, Express.js
+
+
+Database: MongoDB (Atlas or local)
+
+
+Authentication: JSON Web Tokens (JWT)
+
+
+Deployment: Render
+
+
+
+Project Structure
+mern-task-manager/
+├── backend/
+│   ├── server.js
+│   ├── routes/
+│   │   ├── auth.js
+│   │   └── tasks.js
+│   ├── models/
+│   │   ├── User.js
+│   │   └── Task.js
+│   └── package.json
+├── frontend/
+│   ├── src/
+│   │   ├── pages/
+│   │   │   ├── Login.jsx
+│   │   │   ├── Signup.jsx
+│   │   │   └── Dashboard.jsx
+│   │   └── App.jsx
+│   ├── public/
+│   └── package.json
+└── README.md
+
+
+Installation
+
+
+Clone the repository
+
+
+git clone <repository_url>
+cd mern-task-manager
+
+
+
+Install backend dependencies
+
+
+cd backend
+npm install
+
+
+
+Install frontend dependencies
+
+
+cd ../frontend
+npm install
+
+
+Environment Variables
+Create a .env file in backend/ with:
+PORT=5000
+MONGO_URI=<Your MongoDB URI>
+JWT_SECRET=<Your JWT Secret>
+
+
+
+PORT: Backend server port (default 5000)
+
+
+MONGO_URI: MongoDB connection string
+
+
+JWT_SECRET: Secret key for JWT authentication
+
+
+
+Running Locally
+Backend
+cd backend
+npm run dev
+
+Frontend
+cd frontend
+npm start
+
+
+
+Open your browser: http://localhost:3000
+
+
+Backend API runs on http://localhost:5000
+
+
+
+Deployment on Render
+
+
+Backend (Web Service)
+
+
+Connect GitHub repo → select backend folder
+
+
+Build command: npm install
+
+
+Start command: npm start
+
+
+Add environment variables: MONGO_URI, JWT_SECRET
+
+
+
+
+Frontend (Static Site)
+
+
+Connect GitHub repo → select frontend folder
+
+
+Build command: npm install && npm run build
+
+
+Publish directory: build
+
+
+
+
+Update frontend Axios URLs to your backend Render URL:
+
+
+axios.get("https://<backend-url>.onrender.com/api/tasks");
+
+
+Usage
+
+
+Signup with email and password.
+
+
+Login to access the dashboard.
+
+
+Add tasks with title, description, status, and due date.
+
+
+Edit or delete tasks as needed.
+
+
+Mark tasks as completed.
+
+
+Logout when done.
+
+
+

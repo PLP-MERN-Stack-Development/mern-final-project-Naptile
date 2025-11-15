@@ -12,6 +12,7 @@ function Dashboard() {
 
   const navigate = useNavigate();
   const token = localStorage.getItem("token");
+  const API_URL = process.env.REACT_APP_API_URL;
 
   useEffect(() => {
     if (!token) navigate("/login");
@@ -20,7 +21,7 @@ function Dashboard() {
 
   const fetchTasks = async () => {
     try {
-      const res = await axios.get("http://localhost:5000/api/tasks", {
+      const res = await axios.get(`${API_URL}/api/tasks`, {
         headers: { Authorization: `Bearer ${token}` }
       });
       setTasks(res.data);
@@ -34,7 +35,7 @@ function Dashboard() {
     if (!title) return setMessage("Title is required");
     try {
       await axios.post(
-        "http://localhost:5000/api/tasks",
+        `${API_URL}/api/tasks`,
         { title, description, status, dueDate: dueDate || null },
         { headers: { Authorization: `Bearer ${token}` } }
       );
@@ -52,7 +53,7 @@ function Dashboard() {
 
   const handleDeleteTask = async (id) => {
     try {
-      await axios.delete(`http://localhost:5000/api/tasks/${id}`, {
+      await axios.delete(`${API_URL}/api/tasks/${id}`, {
         headers: { Authorization: `Bearer ${token}` }
       });
       setMessage("Task deleted");
@@ -66,7 +67,7 @@ function Dashboard() {
   const handleCompleteTask = async (id) => {
     try {
       await axios.put(
-        `http://localhost:5000/api/tasks/${id}`,
+        `${API_URL}/api/tasks/${id}`,
         { status: "completed" },
         { headers: { Authorization: `Bearer ${token}` } }
       );
@@ -108,10 +109,6 @@ function Dashboard() {
           value={description}
           onChange={(e) => setDescription(e.target.value)}
         />
-        {/* <select value={status} onChange={(e) => setStatus(e.target.value)}>
-          <option value="pending">Pending</option>
-          <option value="completed">Completed</option>
-        </select> */}
         <input
           type="date"
           value={dueDate}

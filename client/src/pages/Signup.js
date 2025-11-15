@@ -9,13 +9,14 @@ function Signup() {
   const [password, setPassword] = useState("");
   const [message, setMessage] = useState("");
   const navigate = useNavigate();
+  const API_URL = process.env.REACT_APP_API_URL;
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     setMessage(""); // clear previous message
 
     try {
-      const res = await axios.post("http://localhost:5000/api/auth/signup", {
+      const res = await axios.post(`${API_URL}/api/auth/signup`, {
         username,
         email,
         password,
@@ -27,20 +28,15 @@ function Signup() {
     } catch (error) {
       console.error("FULL ERROR OBJECT:", error);
 
-      // Check if backend returned a response
       if (error.response) {
-        // If backend provides a message, show it
         if (error.response.data && error.response.data.message) {
           setMessage(error.response.data.message);
         } else {
-          // Show full backend response if no message property
           setMessage(JSON.stringify(error.response.data));
         }
       } else if (error.request) {
-        // Request was made but no response received
         setMessage("No response from server. Please check backend.");
       } else {
-        // Other errors
         setMessage(`Error: ${error.message}`);
       }
     }
